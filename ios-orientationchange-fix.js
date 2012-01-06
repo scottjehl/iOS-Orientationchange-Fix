@@ -5,9 +5,9 @@
 (function(w){
     var doc = w.document;
 
-    if( !doc.querySelectorAll ){ return; }
+    if( !doc.querySelector ){ return; }
 
-    var meta = doc.querySelectorAll( "meta[name=viewport]" )[ 0 ],
+    var meta = doc.querySelector( "meta[name=viewport]" ),
         initialContent = meta && meta.getAttribute( "content" ),
         disabledZoom = initialContent + ", maximum-scale=1.0",
         enabledZoom = initialContent + ", maximum-scale=10.0",
