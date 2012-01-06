@@ -34,7 +34,7 @@
         if( rotation > 8 && orientation === 0 ){
             if( enabled ){
                 disableZoom();
-            }   
+            }
         }
         else {
             if( !enabled ){
