@@ -9,8 +9,8 @@
 
     var meta = doc.querySelector( "meta[name=viewport]" ),
         initialContent = meta && meta.getAttribute( "content" ),
-        disabledZoom = initialContent + ", maximum-scale=1.0",
-        enabledZoom = initialContent + ", maximum-scale=10.0",
+        disabledZoom = initialContent + ", maximum-scale=1",
+        enabledZoom = initialContent + ", maximum-scale=10",
         enabled = true,
         orientation = w.orientation,
         rotation = 0;
