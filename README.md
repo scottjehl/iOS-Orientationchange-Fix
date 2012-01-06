@@ -4,6 +4,8 @@ A fix for the iOS orientationchange zoom bug.
 Authored by @scottjehl, rebounded by @wilto.
 MIT License.
 
+Demo: http://scottjehl.github.com/iOS-Orientationchange-Fix/
+
 Instructions: 
 Include the script, enable your zooms. (I'll fill that out more later...).
 
