@@ -12,8 +12,7 @@
         disabledZoom = initialContent + ",maximum-scale=1",
         enabledZoom = initialContent + ",maximum-scale=10",
         enabled = true,
-		x = y = z = 0,
-		orientation, aig;
+		x, y, z, aig;
 
     if( !meta ){ return; }
 
@@ -26,18 +25,15 @@
         meta.setAttribute( "content", disabledZoom );
         enabled = false;
     }
-
+	
     function checkTilt( e ){
-        orientation = w.orientation;
 		aig = e.accelerationIncludingGravity;
-		
-		if( aig ){
-        	x = Math.abs( aig.x );
-			y = Math.abs( aig.y );
-			z = Math.abs( aig.z );
-		}
-
-        if( orientation === 0 && ( e.type === "deviceorientation" || x > 7 || ( z > 4 && ( x > 6 || y > 6 ) ) ) ){
+		x = Math.abs( aig.x );
+		y = Math.abs( aig.x );
+		z = Math.abs( aig.z );
+				
+		// If portrait orientation and in the danger zone ( z > 6 && x > 2.8 )
+        if( !w.orientation && ( x > 8.1 || ( ( z > 6.5 || y > 6.5 ) && x > 5.5 ) ) ){
 			if( enabled ){
 				disableZoom();
 			}        	
@@ -48,7 +44,6 @@
     }
 	
     w.addEventListener( "orientationchange", restoreZoom, false );
-	w.addEventListener( "deviceorientation", checkTilt, false );
 	w.addEventListener( "devicemotion", checkTilt, false );
 
 })( this );
