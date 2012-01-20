@@ -32,7 +32,7 @@
 		y = Math.abs( aig.x );
 		z = Math.abs( aig.z );
 				
-		// If portrait orientation and in the danger zone ( z > 6 && x > 2.8 )
+		// If portrait orientation and in the danger zone
         if( !w.orientation && ( x > 8.1 || ( ( z > 6.5 || y > 6.5 ) && x > 5.5 ) ) ){
 			if( enabled ){
 				disableZoom();
