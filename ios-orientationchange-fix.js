@@ -3,6 +3,12 @@
  MIT License.
 */
 (function(w){
+	
+	// This fix addresses an iOS bug, so return early if the UA claims it's something else.
+	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && navigator.userAgent.indexOf( "AppleWebKit" ) > -1 ) ){
+		return;
+	}
+	
     var doc = w.document;
 
     if( !doc.querySelector ){ return; }
@@ -43,7 +49,7 @@
         }
     }
 	
-    w.addEventListener( "orientationchange", restoreZoom, false );
+	w.addEventListener( "orientationchange", restoreZoom, false );
 	w.addEventListener( "devicemotion", checkTilt, false );
 
 })( this );
