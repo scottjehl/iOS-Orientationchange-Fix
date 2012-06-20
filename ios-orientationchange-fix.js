@@ -5,10 +5,11 @@
 (function(w){
 	
 	// This fix addresses an iOS bug, so return early if the UA claims it's something else.
-	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && navigator.userAgent.indexOf( "AppleWebKit" ) > -1 ) ){
+	var ua = navigator.userAgent;
+	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_\d like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
 		return;
 	}
-	
+
     var doc = w.document;
 
     if( !doc.querySelector ){ return; }
