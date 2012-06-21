@@ -6,7 +6,7 @@
 	
 	// This fix addresses an iOS bug, so return early if the UA claims it's something else.
 	var ua = navigator.userAgent;
-	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_\d like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
+	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5][_\d]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
 		return;
 	}
 
