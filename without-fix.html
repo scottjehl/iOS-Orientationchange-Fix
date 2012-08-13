@@ -7,12 +7,9 @@
 </head>
 <body>
 
-<h1>Test page for ios-orientationchange-fix.js</h1>
+<h1>Test page without ios-orientationchange-fix.js</h1>
 
-<a href="index.html">See the fixed version.</a>
-
-<p>This page is a demo of a bugfix for the iOS orientation change bug, in which the page zooms beyond the viewport on orientationchange when user scaling is enabled. Summary below.</p>
-
+<p>This page is a demo of the default behavior without the bugfix applied. An iOS orientationchange event will cause the page to zoom beyond the viewport when user scaling is enabled. Summary below. <a href="index.html">See this same page with the fix applied.</a></p>
 
 <h2>Summary of bug</h2>
 <p>When the meta viewport tag is set to content="width=device-width,initial-scale=1", or any value that allows user-scaling, changing the device to landscape orientation causes the page to scale larger than 1.0. As a result, a portion of the page is cropped off the right, and the user must double-tap (sometimes more than once) to get the page to zoom properly into view.</p>
@@ -38,8 +35,6 @@ If the content attribute is adjusted with either user-scalable=no or maximum-sca
 
 <p>Thanks!</p>
 <p>Scott Jehl, Filament Group / jQuery Mobile Team</p>
-
-<a href="index.html">See the fixed version.</a>
 
 </body>
 </html>
