@@ -8,7 +8,14 @@ Demo: http://scottjehl.github.com/iOS-Orientationchange-Fix/
 
 Minified src:
 
-	/*! A fix for the iOS orientationchange zoom bug. Script by @scottjehl, rebound by @wilto.MIT / GPLv2 License.*/(function(a){function m(){d.setAttribute("content",g),h=!0}function n(){d.setAttribute("content",f),h=!1}function o(b){l=b.accelerationIncludingGravity,i=Math.abs(l.x),j=Math.abs(l.y),k=Math.abs(l.z),(!a.orientation||a.orientation===180)&&(i>7||(k>6&&j<8||k<8&&j>6)&&i>5)?h&&n():h||m()}var b=navigator.userAgent;if(!(/iPhone|iPad|iPod/.test(navigator.platform)&&/OS [1-5]_[0-9_]* like Mac OS X/i.test(b)&&b.indexOf("AppleWebKit")>-1))return;var c=a.document;if(!c.querySelector)return;var d=c.querySelector("meta[name=viewport]"),e=d&&d.getAttribute("content"),f=e+",maximum-scale=1",g=e+",maximum-scale=10",h=!0,i,j,k,l;if(!d)return;a.addEventListener("orientationchange",m,!1),a.addEventListener("devicemotion",o,!1)})(this);	
+	/*! A fix for the iOS orientationchange zoom bug. Script by @scottjehl, rebound by @wilto, modified by PeterWooster.MIT / GPLv2 License.*/(function(a)
+(function(w){var ua=navigator.userAgent;if(!(/iPhone|iPad|iPod/.test(navigator.platform)&&/OS [1-5]_[0-9_]* like Mac OS X/i.test(ua)&&ua.indexOf("AppleWebKit")>-1&&ua.indexOf("CriOS")==-1)){return;}
+var doc=w.document;if(!doc.querySelector){return;}
+var meta=doc.querySelector("meta[name=viewport]"),initialContent=meta&&meta.getAttribute("content"),disabledZoom=initialContent+",maximum-scale=1",enabledZoom=initialContent+",maximum-scale=10",enabled=true,x,y,z,aig;if(!meta){return;}
+function restoreZoom(){meta.setAttribute("content",enabledZoom);enabled=true;}
+function disableZoom(){meta.setAttribute("content",disabledZoom);enabled=false;}
+function checkTilt(e){aig=e.accelerationIncludingGravity;x=Math.abs(aig.x);y=Math.abs(aig.y);var s=x/y;if(s>1.2){if(enabled){disableZoom();}}else if(!enabled){restoreZoom();}}
+w.addEventListener("orientationchange",restoreZoom,false);w.addEventListener("devicemotion",checkTilt,false);})(this);
 Instructions: 
 Include the script, enable your zooms. (I'll fill that out more later...).
 
