@@ -1,12 +1,12 @@
-/*! A fix for the iOS orientationchange zoom bug.
- Script by @scottjehl, rebound by @wilto.
+/*! A fix for the iOS Safari orientationchange zoom bug.
+ Script by @scottjehl, rebound by @wilto, modified by @peterwooster.
  MIT / GPLv2 License.
 */
 (function(w){
 	
-	// This fix addresses an iOS bug, so return early if the UA claims it's something else.
+	// This fix addresses an iOS Safari bug, so return early if the UA claims it's something else.
 	var ua = navigator.userAgent;
-	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
+	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1  && ua.indexOf( "CriOS") == -1 ) ){
 		return;
 	}
 
@@ -37,16 +37,15 @@
 		aig = e.accelerationIncludingGravity;
 		x = Math.abs( aig.x );
 		y = Math.abs( aig.y );
-		z = Math.abs( aig.z );
-				
-		// If portrait orientation and in one of the danger zones
-        if( (!w.orientation || w.orientation === 180) && ( x > 7 || ( ( z > 6 && y < 8 || z < 8 && y > 6 ) && x > 5 ) ) ){
-			if( enabled ){
-				disableZoom();
-			}        	
-        }
-		else if( !enabled ){
-			restoreZoom();
+		
+        var s = x/y;
+        // If in the danger zone where x is much greater than y turn off zoom
+        if(s > 1.2){
+            if(enabled){
+            	disableZoom();
+            }
+        }else if( !enabled ){
+        	restoreZoom();
         }
     }
 	
