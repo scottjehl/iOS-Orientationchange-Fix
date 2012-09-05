@@ -8,8 +8,7 @@ Demo: http://scottjehl.github.com/iOS-Orientationchange-Fix/
 
 Minified src:
 
-	/*! A fix for the iOS orientationchange zoom bug. Script by @scottjehl, rebound by @wilto, modified by PeterWooster.MIT / GPLv2 License.*/(function(a)
-(function(w){var ua=navigator.userAgent;if(!(/iPhone|iPad|iPod/.test(navigator.platform)&&/OS [1-5]_[0-9_]* like Mac OS X/i.test(ua)&&ua.indexOf("AppleWebKit")>-1&&ua.indexOf("CriOS")==-1)){return;}
+	/*! A fix for the iOS orientationchange zoom bug. Script by @scottjehl, rebound by @wilto, modified by PeterWooster.MIT / GPLv2 License.*/(function(a)(function(w){var ua=navigator.userAgent;if(!(/iPhone|iPad|iPod/.test(navigator.platform)&&/OS [1-5]_[0-9_]* like Mac OS X/i.test(ua)&&ua.indexOf("AppleWebKit")>-1&&ua.indexOf("CriOS")==-1)){return;}
 var doc=w.document;if(!doc.querySelector){return;}
 var meta=doc.querySelector("meta[name=viewport]"),initialContent=meta&&meta.getAttribute("content"),disabledZoom=initialContent+",maximum-scale=1",enabledZoom=initialContent+",maximum-scale=10",enabled=true,x,y,z,aig;if(!meta){return;}
 function restoreZoom(){meta.setAttribute("content",enabledZoom);enabled=true;}
